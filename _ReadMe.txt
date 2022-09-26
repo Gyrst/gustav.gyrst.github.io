@@ -19,3 +19,9 @@ License: Free for personal and commercial use under the Creative Commons Attribu
 - Google Font Playfair Display ( https://fonts.google.com/specimen/Playfair+Display )
 - Font Awesome ( http://fontawesome.io/ )
 - Demo Images ( https://pixabay.com/ )
+
+
+
+REMINDER:
+- ADD favicon creds 
+- ADD 
