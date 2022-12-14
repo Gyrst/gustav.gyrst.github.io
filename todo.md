@@ -33,7 +33,8 @@ Really Cool Terminal Effect to Download CV
 + possibly use this one for skillset? https://carbondesignsystem.com/data-visualization/complex-charts/#circle-packs -> https://codesandbox.io/s/2fmsoo?file=/index.html
 + https://carbondesignsystem.com/components/tooltip/usage/ tool tips
 + https://codepen.io/Quendoline/pen/pjELpM
-
++ Google charts: https://developers.google.com/chart/interactive/docs/gallery?hl=da
++ bubble chart https://codepen.io/elorenn/pen/LWNxyG
 
 
 #### to insert your GitHub Contributions
