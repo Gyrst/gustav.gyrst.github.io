@@ -32,6 +32,8 @@ Really Cool Terminal Effect to Download CV
 + Skill bar design --> perhaps circles? https://niemvuilaptrinh.medium.com/how-to-create-skill-bar-and-15-progress-bar-css-javascript-2021-bdcb1d24d7c5
 + possibly use this one for skillset? https://carbondesignsystem.com/data-visualization/complex-charts/#circle-packs -> https://codesandbox.io/s/2fmsoo?file=/index.html
 + https://carbondesignsystem.com/components/tooltip/usage/ tool tips
++ https://codepen.io/Quendoline/pen/pjELpM
+
 
 
 #### to insert your GitHub Contributions
