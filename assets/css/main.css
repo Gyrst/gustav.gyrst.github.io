@@ -505,11 +505,29 @@ a:hover
 
 
 /** 6. PORTFOLIO
+*******************************************************************
+* EXPERIMENT: "floating" staggered treatment.
+* The reveal-on-scroll animation (ScrollReveal, driven by the
+* `.scroll-animated-from-bottom` class on `.item`) manipulates the
+* `.item` element's own inline transform/opacity. To avoid fighting
+* that with the idle float / hover transforms below, all of the new
+* visual treatment (rotation, drift, hover lift, shadow) is applied
+* to a nested `.item-inner` wrapper instead of `.item` itself.
 *******************************************************************/
 
 .portfolio
 {
-    padding: 0 30px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 2rem 30px;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .portfolio .item
@@ -517,15 +535,77 @@ a:hover
     position: relative;
 
     display: block;
-    overflow: hidden;
 
-    max-width: 990px;
-    margin: 0 auto 10rem auto;
-
-    border: 6px solid #fff;
+    width: 78%;
+    margin: 0 0 9rem 0;
 }
 
-.portfolio .item:before
+.portfolio .item:last-child
+{
+    margin-bottom: 0;
+}
+
+/* alternating horizontal offsets + sizes = "scattered" floating layout */
+.portfolio .item:nth-child(1) { -ms-flex-item-align: start; align-self: flex-start; width: 82%; --rot: -1.4deg; }
+.portfolio .item:nth-child(2) { -ms-flex-item-align: end;   align-self: flex-end;   width: 60%; --rot: 1.2deg;  margin-top: -4.5rem; }
+.portfolio .item:nth-child(3) { -ms-flex-item-align: start; align-self: flex-start; width: 92%; --rot: -0.8deg; margin-left: 6%; }
+.portfolio .item:nth-child(4) { -ms-flex-item-align: end;   align-self: flex-end;   width: 56%; --rot: 1.8deg;  margin-top: -3.5rem; }
+.portfolio .item:nth-child(5) { -ms-flex-item-align: start; align-self: flex-start; width: 74%; --rot: -1deg; }
+
+.portfolio .item .item-inner
+{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    border-radius: 14px;
+    -webkit-box-shadow: 0 25px 45px -18px rgba(0,0,0,.6), 0 10px 20px -8px rgba(0,0,0,.35);
+            box-shadow: 0 25px 45px -18px rgba(0,0,0,.6), 0 10px 20px -8px rgba(0,0,0,.35);
+
+    --rot: 0deg;
+
+    -webkit-transform: rotate(var(--rot));
+        -ms-transform: rotate(var(--rot));
+            transform: rotate(var(--rot));
+    -webkit-transition: -webkit-transform .45s cubic-bezier(.22,1,.36,1), -webkit-box-shadow .45s ease;
+            transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s ease;
+
+    -webkit-animation: portfolio-float 7s ease-in-out infinite;
+            animation: portfolio-float 7s ease-in-out infinite;
+}
+
+.portfolio .item:nth-child(1) .item-inner { --rot: -1.4deg; -webkit-animation-delay: 0s;   animation-delay: 0s; }
+.portfolio .item:nth-child(2) .item-inner { --rot: 1.2deg;  -webkit-animation-delay: .9s;  animation-delay: .9s; }
+.portfolio .item:nth-child(3) .item-inner { --rot: -0.8deg; -webkit-animation-delay: 1.8s; animation-delay: 1.8s; }
+.portfolio .item:nth-child(4) .item-inner { --rot: 1.8deg;  -webkit-animation-delay: 2.7s; animation-delay: 2.7s; }
+.portfolio .item:nth-child(5) .item-inner { --rot: -1deg;   -webkit-animation-delay: 3.6s; animation-delay: 3.6s; }
+
+@-webkit-keyframes portfolio-float
+{
+    0%, 100% { -webkit-transform: rotate(var(--rot)) translateY(0); }
+    50%      { -webkit-transform: rotate(var(--rot)) translateY(-14px); }
+}
+
+@keyframes portfolio-float
+{
+    0%, 100% { transform: rotate(var(--rot)) translateY(0); }
+    50%      { transform: rotate(var(--rot)) translateY(-14px); }
+}
+
+.portfolio .item:hover .item-inner
+{
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+
+    -webkit-transform: rotate(0deg) translateY(-10px) scale(1.025);
+        -ms-transform: rotate(0deg) translateY(-10px) scale(1.025);
+            transform: rotate(0deg) translateY(-10px) scale(1.025);
+    -webkit-box-shadow: 0 35px 55px -15px rgba(0,0,0,.65), 0 15px 25px -8px rgba(0,0,0,.4);
+            box-shadow: 0 35px 55px -15px rgba(0,0,0,.65), 0 15px 25px -8px rgba(0,0,0,.4);
+}
+
+.portfolio .item-inner:before
 {
     display: block;
 
@@ -534,12 +614,7 @@ a:hover
     content: '';
 }
 
-.portfolio .item:last-child
-{
-    margin-bottom: 0;
-}
-
-.portfolio .item .item-cover
+.portfolio .item-inner .item-cover
 {
     position: absolute;
     top: 0;
@@ -548,43 +623,108 @@ a:hover
     width: 100%;
     height: 100%;
 
+    -webkit-transition: -webkit-transform .5s ease;
+            transition: transform .5s ease;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+
     background-position: center;
     background-size: cover;
 }
 
+.portfolio .item:hover .item-inner .item-cover
+{
+    -webkit-transform: scale(1.06);
+        -ms-transform: scale(1.06);
+            transform: scale(1.06);
+}
+
+.portfolio .item-inner:after
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+
+    width: 100%;
+    height: 100%;
+
+    content: '';
+    background: rgba(0,0,0,0);
+
+    -webkit-transition: background .35s ease;
+            transition: background .35s ease;
+}
+
+.portfolio .item:hover .item-inner:after
+{
+    background: rgba(0,0,0,.18);
+}
+
 .portfolio .item i
 {
-    font-size: 2.2rem;
-    line-height: 3em;
+    font-size: 1.8rem;
+    line-height: 3.4em;
 
     position: absolute;
     z-index: 10;
     top: 50%;
-    right: 0;
+    left: 50%;
 
-    width: 3em;
+    width: 3.4em;
+    height: 3.4em;
     padding: 0;
 
-    -webkit-transition: .25s ease;
-         -o-transition: .25s ease;
-            transition: .25s ease;
-    -webkit-transform: translate(100%,-50%);
-        -ms-transform: translate(100%,-50%);
-            transform: translate(100%,-50%);
+    border-radius: 50%;
+
+    -webkit-transition: .3s ease;
+         -o-transition: .3s ease;
+            transition: .3s ease;
+    -webkit-transform: translate(-50%,-50%) scale(.5);
+        -ms-transform: translate(-50%,-50%) scale(.5);
+            transform: translate(-50%,-50%) scale(.5);
     text-align: center;
 
     opacity: 0;
     color: #111;
-    background: #fff;
+    background: rgba(255,255,255,.94);
 }
 
 .portfolio .item:hover i
 {
-    -webkit-transform: translate(0,-50%);
-        -ms-transform: translate(0,-50%);
-            transform: translate(0,-50%);
+    -webkit-transform: translate(-50%,-50%) scale(1);
+        -ms-transform: translate(-50%,-50%) scale(1);
+            transform: translate(-50%,-50%) scale(1);
 
     opacity: 1;
+}
+
+@media (max-width: 768px)
+{
+    .portfolio .item,
+    .portfolio .item:nth-child(1),
+    .portfolio .item:nth-child(2),
+    .portfolio .item:nth-child(3),
+    .portfolio .item:nth-child(4),
+    .portfolio .item:nth-child(5)
+    {
+        -ms-flex-item-align: center;
+                align-self: center;
+
+        width: 100%;
+        margin: 0 0 4rem 0;
+        --rot: 0deg;
+    }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .portfolio .item-inner
+    {
+        -webkit-animation: none;
+                animation: none;
+    }
 }
 
 /** 7. FOOTER
