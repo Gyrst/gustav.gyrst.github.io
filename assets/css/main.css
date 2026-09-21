@@ -808,8 +808,12 @@ Added this section in attempt to see how the result would be with a background p
  * ------------------------------------------------------------------- 
  */
  #resume {
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 8rem;
+	padding-bottom: 8rem;
+
+	border-top: 2px solid rgba(27, 140, 21, .5);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, .02);
 }
 
 #resume .resume-header {
@@ -817,29 +821,46 @@ Added this section in attempt to see how the result would be with a background p
 }
 #resume .resume-header h2 {
 	color: rgb(27, 140, 21);
+	margin-bottom: .4rem;
+}
+#resume .resume-header p {
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	font-size: 1.5rem;
+	color: #999;
 }
 
 #resume .resume-timeline {
 	max-width: 980px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#resume .resume-timeline.education-timeline {
+	padding-top: 3rem;
+	margin-top: 1rem;
+	border-top: 1px solid rgba(255, 255, 255, .08);
 }
 #resume .timeline-wrap {
 	position: relative;
 	margin-top: 1.5rem;
-	margin-bottom: 6rem;
+	margin-bottom: 2rem;
 }
 #resume .timeline-wrap::before {
 	content: "";
 	display: block;
 	width: 1px;
 	height: 100%;
-	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, .35);
 	position: absolute;
 	left: 35%;
 	top: 0;
 }
 #resume .timeline-block {
 	position: relative;
-	padding-top: 1.5rem;
+	padding-top: 2.6rem;
+	padding-bottom: 2.6rem;
+}
+#resume .timeline-block:not(:last-child) {
+	border-bottom: 1px solid rgba(255, 255, 255, .05);
 }
 #resume .timeline-ico {
 	height: 4.8rem;
@@ -851,8 +872,13 @@ Added this section in attempt to see how the result would be with a background p
 	color: #FFFFFF;
 	position: absolute;
 	left: 35%;
-	top: .9rem;
+	top: 2rem;
 	margin-left: -2.4rem;
+	transition: background-color .3s ease, transform .3s ease;
+}
+#resume .timeline-block:hover .timeline-ico {
+	background: rgb(27, 140, 21);
+	transform: scale(1.08);
 }
 #resume .timeline-ico i {
 	position: relative;
@@ -870,7 +896,7 @@ Added this section in attempt to see how the result would be with a background p
 	margin-bottom: 0;
 }
 #resume .timeline-header p {
-	font-family: "poppins-regular", sans-serif;
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-size: 1.6rem;
 	color: #888888;
 }
@@ -887,7 +913,7 @@ Added this section in attempt to see how the result would be with a background p
 	display: block;
 	height: 3px;
 	width: 50px;
-	background: rgba(255, 255, 255, 0.671);
+	background: rgba(27, 140, 21, .8);
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -1005,182 +1031,219 @@ Added this section in attempt to see how the result would be with a background p
 
 
 
-/** 
+/**
  * ===================================================================
- * 13. Skill Bubbles
+ * 13. Skills Section
  *
- * ------------------------------------------------------------------- 
+ * -------------------------------------------------------------------
  */
-.skills-diagram {
-    font-size: 16px;
-    font-weight: bold;
+
+.cta-row {
+    margin-top: .5rem;
+}
+
+.button1 i {
+    margin-right: .6em;
+}
+
+.about-skills {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+#skills .skills-header {
     text-align: center;
-    max-width: 35em;
-    margin: 2em auto 2em;
+    margin-bottom: 4rem;
 }
 
-.skills-diagram>dd {
-    /* Hide inner attributes */
-    display: none;
+#skills .skills-header h2 {
+    color: rgb(27, 140, 21);
+    margin-bottom: .4rem;
 }
 
-.skills-diagram dt {
-    display: inline-block;
-    vertical-align: top;
+#skills .skills-header p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: #999;
+    margin-bottom: 0;
+}
 
-    border-style: solid;
-    border-width: 1px;
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.4rem;
+}
+
+.skill-card {
+    padding: 2.6rem 2.6rem 2.8rem;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .025);
+
+    transition: border-color .25s ease, background-color .25s ease;
+}
+
+.skill-card:hover {
+    border-color: rgba(27, 140, 21, .55);
+    background: rgba(255, 255, 255, .045);
+}
+
+.skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+
+    margin-bottom: 1rem;
+}
+
+.skill-card-header i {
+    width: 1.3em;
+
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(27, 140, 21);
+}
+
+.skill-card-header h3 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+.skill-card-desc {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #999;
+    margin-bottom: 1.8rem !important;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.tag-list li {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: .01em;
+    color: #ddd;
+
+    padding: .55em 1.1em;
+
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, .03);
+
+    transition: border-color .2s ease, color .2s ease, background-color .2s ease;
+}
+
+.tag-list li:hover {
+    color: #fff;
+    border-color: rgba(27, 140, 21, .8);
+    background: rgba(27, 140, 21, .14);
+}
+
+/**
+ * ===================================================================
+ * 14. Map (Places I've lived)
+ * -------------------------------------------------------------------
+ */
+
+.about-map {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+.about-map .section-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.about-map .section-header h4 {
+    margin-bottom: 0;
+}
+
+.map-wrap {
+    padding: 1.6rem;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .02);
+    overflow: hidden;
+}
+
+/**
+ * ===================================================================
+ * 15. Connect / Social
+ * -------------------------------------------------------------------
+ */
+
+.about-connect {
+    margin-top: 4rem;
+}
+
+.about-connect .connect-header {
+    text-align: center;
+}
+
+.about-connect .connect-header h6 {
+    color: rgb(27, 140, 21);
+}
+
+.about-connect .connect-header p {
+    margin-bottom: 0;
+}
+
+.about .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+
+    margin: 2.4rem 0 3rem 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.about .social-links li {
+    margin: 0;
+    font-size: inherit;
+}
+
+.about .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 5rem;
+    height: 5rem;
+
+    font-size: 1.9rem;
+    color: #fff;
+
+    border: 1px solid rgba(255, 255, 255, .15);
     border-radius: 50%;
 
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-
-    /* set defaults to skill-2 */
-    width: 2em;
-    height: 2em;
-    line-height: 2em;
+    transition: border-color .25s ease, background-color .25s ease, color .25s ease;
 }
 
-.skills-diagram dt:hover {
-    -webkit-transform: scale(1.3);
-    -moz-transform: scale(1.3);
-    -o-transform: scale(1.3);
-    -ms-transform: scale(1.3);
-    transform: scale(1.3);
+.about .social-links a:hover {
+    color: rgb(27, 140, 21);
+    border-color: rgba(27, 140, 21, .8);
+    background: rgba(27, 140, 21, .12);
 }
 
-/* Support vertical mode */
-.skills-diagram-vertical dt {
-    display: block;
-    /* .25em is an equivalent to inline-block's horizontal whitespace margin */
-    margin: .25em auto;
-}
-
-/* Provide 10 different sizes */
-.skills-diagram .skill-2 {
-    width: 2em;
-    height: 2em;
-    line-height: 2em;
-
-    background-color: rgba(201, 155, 129, .3);
-    border-color: rgba(201, 155, 129, 1);
-    color: rgba(201, 155, 129, 1);
-}
-
-.skills-diagram .skill-3 {
-    vertical-align: middle;
-
-    width: 3em;
-    height: 3em;
-    line-height: 3em;
-    background-color: rgba(138, 138, 140, .3);
-    border-color: rgba(138, 138, 140, 1);
-    color: rgba(138, 138, 140, 1);
-}
-
-.skills-diagram .skill-4 {
-    width: 4em;
-    height: 4em;
-    line-height: 4em;
-
-    background-color: rgba(234, 112, 97, .3);
-    border-color: rgba(234, 112, 97, 1);
-    color: rgba(234, 112, 97, 1);
-}
-
-.skills-diagram .skill-5 {
-    vertical-align: bottom;
-
-    width: 5em;
-    height: 5em;
-    line-height: 5em;
-    background-color: rgba(109, 182, 173, .3);
-    border-color: rgba(109, 182, 173, 1);
-    color: rgba(109, 182, 173, 1);
-}
-
-.skills-diagram .skill-6 {
-    vertical-align: top;
-
-    width: 6em;
-    height: 6em;
-    line-height: 6em;
-
-    background-color: rgba(195, 192, 100, .3);
-    border-color: rgba(195, 192, 100, 1);
-    color: rgba(195, 192, 100, 1);
-}
-
-.skills-diagram .skill-7 {
-    width: 7em;
-    height: 7em;
-    line-height: 7em;
-
-    background-color: rgba(214, 89, 102, .3);
-    border-color: rgba(214, 89, 102, 1);
-    color: rgba(214, 89, 102, 1);
-}
-
-.skills-diagram .skill-8 {
-    vertical-align: bottom;
-
-    width: 8em;
-    height: 8em;
-    line-height: 8em;
-    background-color: rgba(46, 138, 75, .3);
-    border-color: rgba(46, 138, 75, 1);
-    color: rgba(46, 138, 75, 1);
-}
-
-.skills-diagram .skill-9 {
-    width: 11em;
-    height: 11em;
-    line-height: 11em;
-
-    background-color: rgba(177, 18, 2, .3);
-    border-color: rgba(177, 18, 2, 1);
-    color: rgba(177, 18, 2, 1);
-}
-
-.skills-diagram .skill-10 {
-    width: 14em;
-    height: 14em;
-    line-height: 14em;
-    background-color: rgba(81, 112, 144, .3);
-    border-color: rgba(81, 112, 144, 1);
-    color: rgba(81, 112, 144, 1);
-}
-
-.skills-diagram .skill-11 {
-    width: 5em;
-    height: 5em;
-    line-height: 5em;
-    background-color: rgba(81, 112, 144, .3);
-    border-color: rgba(81, 112, 144, 1);
-    color: rgba(81, 112, 144, 1);
-}
-
-
-/* Just to add real-scenario feeling */
-@font-face {
-    font-family: 'Oswald';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Oswald Regular'), local('Oswald-Regular'), url(http://themes.googleusercontent.com/static/fonts/oswald/v7/-g5pDUSRgvxvOl5u-a_WHw.woff) format('woff');
-}
-
-a {
-    color: grey;
-}
-
-a:hover {
-    color: #ccc;
-}
-
-h1 {
-    color: #cecece;
-    text-shadow: 0 1px 1px #fff;
+@media only screen and (max-width:768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }
