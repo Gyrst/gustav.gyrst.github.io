@@ -18,7 +18,7 @@
         <link rel="shortcut icon" href="assets/img/favicon.png">
 
         <!-- FONTS -->
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900&amp;subset=latin-ext" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Work+Sans:300,400,500,600&amp;subset=latin-ext" rel="stylesheet">
 
         <!-- STYLESHEETS -->
         <link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
@@ -76,12 +76,13 @@
 
                 <h1 class="scroll-animated-from-bottom">Hi, my name is Gustav Gyrst.</h1>
 
-                <h4 class="scroll-animated-from-bottom">I'm a Data Scientist and Software Designer with a background in business and passion for Music.</h4>
+                <h4 class="scroll-animated-from-bottom">I'm a Senior Data Consultant building data and AI systems, with a background in business and a lifelong love of Jazz.</h4>
 
-                <p class="scroll-animated-from-bottom">I am a MSc Software Design student studying at ITU with a business background (BSc in International Business) and work
-                    experience in a French scale-up. I love to code and drive change through analytics. Learning is what drives me. I am currently
-                    developing my analytical and technical skillset at ITU. Also, I love Jazz. I studied at the conservatory in Paris for two years after
-                    finishing high school.</p>
+                <p class="scroll-animated-from-bottom">I currently work as a Senior Data Consultant at Netcompany, building production-grade data pipelines, machine
+                    learning models, and LLM-powered applications for public- and private-sector clients. My path here wasn't the usual one: a BSc in
+                    International Business, two years studying Jazz at a conservatory in Paris, and an MSc in Software Design at ITU, where I'm finishing
+                    a thesis on NLP and how Danish politicians talk about climate change. What ties it together is curiosity — I like learning fast,
+                    driving change through data, and finding where a technical solution actually meets a business problem.</p>
 
                 <div class="cta-row scroll-animated-from-bottom">
                     <a href="https://github.com/Gyrst" class="button1" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
@@ -103,80 +104,107 @@
 
                     <div class="skills-header scroll-animated-from-bottom">
                         <h2>Skills</h2>
-                        <p>A snapshot of the tools and disciplines I work across.</p>
+                        <p>Four ways I work with data — pick one to explore.</p>
                     </div>
 
-                    <div class="skills-grid">
+                    <div class="skills-viz scroll-animated-from-bottom" id="skills-viz">
 
-                        <div class="skill-card scroll-animated-from-bottom">
-                            <div class="skill-card-header">
+                        <!-- TABS -->
+                        <div class="skills-viz-tabs" role="tablist" aria-label="Skill categories">
+                            <button type="button" class="skills-viz-tab is-active" role="tab" aria-selected="true" aria-controls="skills-panel-llm" id="skills-tab-llm" data-target="skills-panel-llm">
                                 <i class="fa fa-magic" aria-hidden="true"></i>
-                                <h3>LLM Engineer</h3>
-                            </div>
-                            <p class="skill-card-desc">Building applications on top of large language models.</p>
-                            <ul class="tag-list">
-                                <li>LLM APIs (OpenAI, Anthropic)</li>
-                                <li>RAG Pipelines</li>
-                                <li>Vector Databases</li>
-                                <li>Prompt Engineering</li>
-                                <li>LangChain / LlamaIndex</li>
-                                <li>Agentic Frameworks</li>
-                                <li>Fine-tuning &amp; LoRA</li>
-                            </ul>
-                        </div>
-
-                        <div class="skill-card scroll-animated-from-bottom">
-                            <div class="skill-card-header">
+                                <span>LLM Engineer</span>
+                            </button>
+                            <button type="button" class="skills-viz-tab" role="tab" aria-selected="false" aria-controls="skills-panel-ml" id="skills-tab-ml" data-target="skills-panel-ml">
                                 <i class="fa fa-cogs" aria-hidden="true"></i>
-                                <h3>Production ML</h3>
-                            </div>
-                            <p class="skill-card-desc">Shipping and maintaining ML models in production.</p>
-                            <ul class="tag-list">
-                                <li>PyTorch</li>
-                                <li>TensorFlow / Keras</li>
-                                <li>MLflow</li>
-                                <li>Docker &amp; Kubernetes</li>
-                                <li>Model Serving (FastAPI)</li>
-                                <li>CI/CD for ML</li>
-                                <li>Monitoring &amp; Observability</li>
-                            </ul>
-                        </div>
-
-                        <div class="skill-card scroll-animated-from-bottom">
-                            <div class="skill-card-header">
+                                <span>Production ML</span>
+                            </button>
+                            <button type="button" class="skills-viz-tab" role="tab" aria-selected="false" aria-controls="skills-panel-ds" id="skills-tab-ds" data-target="skills-panel-ds">
                                 <i class="fa fa-flask" aria-hidden="true"></i>
-                                <h3>Data Scientist</h3>
-                            </div>
-                            <p class="skill-card-desc">Turning data into models and decisions.</p>
-                            <ul class="tag-list">
-                                <li>Python (pandas, NumPy, scikit-learn)</li>
-                                <li>Statistical Modeling</li>
-                                <li>A/B Testing</li>
-                                <li>Classical ML</li>
-                                <li>Data Visualization</li>
-                                <li>SQL</li>
-                                <li>Jupyter</li>
-                            </ul>
-                        </div>
-
-                        <div class="skill-card scroll-animated-from-bottom">
-                            <div class="skill-card-header">
+                                <span>Data Scientist</span>
+                            </button>
+                            <button type="button" class="skills-viz-tab" role="tab" aria-selected="false" aria-controls="skills-panel-de" id="skills-tab-de" data-target="skills-panel-de">
                                 <i class="fa fa-database" aria-hidden="true"></i>
-                                <h3>Data Engineer</h3>
-                            </div>
-                            <p class="skill-card-desc">Designing pipelines that move and shape data.</p>
-                            <ul class="tag-list">
-                                <li>SQL &amp; Data Modeling</li>
-                                <li>Apache Spark</li>
-                                <li>Airflow</li>
-                                <li>ETL / ELT Pipelines</li>
-                                <li>Cloud Data Platforms</li>
-                                <li>dbt</li>
-                                <li>Data Warehousing</li>
-                            </ul>
+                                <span>Data Engineer</span>
+                            </button>
                         </div>
+                        <!-- /TABS -->
 
-                    </div> <!-- /skills-grid -->
+                        <!-- STAGE -->
+                        <div class="skills-viz-stage">
+
+                            <div class="skills-viz-panel is-active" id="skills-panel-llm" role="tabpanel" aria-labelledby="skills-tab-llm">
+                                <p class="skills-viz-desc">Building applications on top of large language models.</p>
+                                <div class="skills-viz-orbit">
+                                    <div class="skills-viz-hub">
+                                        <i class="fa fa-magic" aria-hidden="true"></i>
+                                        <span>LLM Engineer</span>
+                                    </div>
+                                    <div class="skills-viz-node" style="--i:0"><span>LLM APIs (OpenAI, Anthropic)</span></div>
+                                    <div class="skills-viz-node" style="--i:1"><span>RAG Pipelines</span></div>
+                                    <div class="skills-viz-node" style="--i:2"><span>Vector Databases</span></div>
+                                    <div class="skills-viz-node" style="--i:3"><span>Prompt Engineering</span></div>
+                                    <div class="skills-viz-node" style="--i:4"><span>LangChain / LlamaIndex</span></div>
+                                    <div class="skills-viz-node" style="--i:5"><span>Agentic Frameworks</span></div>
+                                    <div class="skills-viz-node" style="--i:6"><span>Fine-tuning &amp; LoRA</span></div>
+                                </div>
+                            </div>
+
+                            <div class="skills-viz-panel" id="skills-panel-ml" role="tabpanel" aria-labelledby="skills-tab-ml" hidden>
+                                <p class="skills-viz-desc">Shipping and maintaining ML models in production.</p>
+                                <div class="skills-viz-orbit">
+                                    <div class="skills-viz-hub">
+                                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        <span>Production ML</span>
+                                    </div>
+                                    <div class="skills-viz-node" style="--i:0"><span>PyTorch</span></div>
+                                    <div class="skills-viz-node" style="--i:1"><span>TensorFlow / Keras</span></div>
+                                    <div class="skills-viz-node" style="--i:2"><span>MLflow</span></div>
+                                    <div class="skills-viz-node" style="--i:3"><span>Docker &amp; Kubernetes</span></div>
+                                    <div class="skills-viz-node" style="--i:4"><span>Model Serving (FastAPI)</span></div>
+                                    <div class="skills-viz-node" style="--i:5"><span>CI/CD for ML</span></div>
+                                    <div class="skills-viz-node" style="--i:6"><span>Monitoring &amp; Observability</span></div>
+                                </div>
+                            </div>
+
+                            <div class="skills-viz-panel" id="skills-panel-ds" role="tabpanel" aria-labelledby="skills-tab-ds" hidden>
+                                <p class="skills-viz-desc">Turning data into models and decisions.</p>
+                                <div class="skills-viz-orbit">
+                                    <div class="skills-viz-hub">
+                                        <i class="fa fa-flask" aria-hidden="true"></i>
+                                        <span>Data Scientist</span>
+                                    </div>
+                                    <div class="skills-viz-node" style="--i:0"><span>Python (pandas, NumPy, scikit-learn)</span></div>
+                                    <div class="skills-viz-node" style="--i:1"><span>Statistical Modeling</span></div>
+                                    <div class="skills-viz-node" style="--i:2"><span>A/B Testing</span></div>
+                                    <div class="skills-viz-node" style="--i:3"><span>Classical ML</span></div>
+                                    <div class="skills-viz-node" style="--i:4"><span>Data Visualization</span></div>
+                                    <div class="skills-viz-node" style="--i:5"><span>SQL</span></div>
+                                    <div class="skills-viz-node" style="--i:6"><span>Jupyter</span></div>
+                                </div>
+                            </div>
+
+                            <div class="skills-viz-panel" id="skills-panel-de" role="tabpanel" aria-labelledby="skills-tab-de" hidden>
+                                <p class="skills-viz-desc">Designing pipelines that move and shape data.</p>
+                                <div class="skills-viz-orbit">
+                                    <div class="skills-viz-hub">
+                                        <i class="fa fa-database" aria-hidden="true"></i>
+                                        <span>Data Engineer</span>
+                                    </div>
+                                    <div class="skills-viz-node" style="--i:0"><span>SQL &amp; Data Modeling</span></div>
+                                    <div class="skills-viz-node" style="--i:1"><span>Apache Spark</span></div>
+                                    <div class="skills-viz-node" style="--i:2"><span>Airflow</span></div>
+                                    <div class="skills-viz-node" style="--i:3"><span>ETL / ELT Pipelines</span></div>
+                                    <div class="skills-viz-node" style="--i:4"><span>Cloud Data Platforms</span></div>
+                                    <div class="skills-viz-node" style="--i:5"><span>dbt</span></div>
+                                    <div class="skills-viz-node" style="--i:6"><span>Data Warehousing</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /STAGE -->
+
+                    </div> <!-- /skills-viz -->
 
                 </section>
 
@@ -385,6 +413,7 @@
         <script type="text/javascript" src="assets/js/plugins.js"></script>
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script type="text/javascript" src="assets/js/neural-network-bg.js"></script>
+        <script type="text/javascript" src="assets/js/skills-viz.js"></script>
 
 
     </body>

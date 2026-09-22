@@ -33,7 +33,7 @@ html
 
 body
 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
     font-style: normal;
 
@@ -53,13 +53,17 @@ h2,
 h3,
 h4,
 h5,
-h6,
-p,
-a
+h6
 {
     font-family: 'Playfair Display', serif;
     font-weight: normal;
 
+    color: #fff;
+}
+
+p,
+a
+{
     color: #fff;
 }
 
@@ -843,7 +847,7 @@ a:hover
 
 .about p
 {
-    line-height: 2.4em;
+    line-height: 1.8em;
 
     margin-bottom: 1.6em;
 }
@@ -983,7 +987,7 @@ a:hover
 	margin-bottom: .4rem;
 }
 #resume .resume-header p {
-	font-family: 'Helvetica Neue', Arial, sans-serif;
+	font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
 	font-size: 1.5rem;
 	color: #999;
 }
@@ -1015,7 +1019,7 @@ a:hover
 #resume .resume-entry-date {
 	flex: 0 0 130px;
 
-	font-family: 'Helvetica Neue', Arial, sans-serif;
+	font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
 	font-size: 1.3rem;
 	color: #888888;
 	padding-top: .4rem;
@@ -1028,7 +1032,7 @@ a:hover
 	color: rgb(27, 140, 21);
 }
 #resume .resume-entry-body p {
-	font-family: 'Helvetica Neue', Arial, sans-serif;
+	font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
 	font-size: 1.4rem;
 	line-height: 1.7;
 	color: #999999;
@@ -1060,7 +1064,7 @@ a:hover
 #resume .resume-role-date {
 	flex: none;
 
-	font-family: 'Helvetica Neue', Arial, sans-serif;
+	font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
 	font-size: 1.3rem;
 	color: #888888;
 }
@@ -1158,92 +1162,215 @@ a:hover
 }
 
 #skills .skills-header p {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
     font-size: 1.5rem;
     color: #999;
     margin-bottom: 0;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.4rem;
+.skills-viz-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    margin-bottom: 4rem;
 }
 
-.skill-card {
-    padding: 2.6rem 2.6rem 2.8rem;
-
-    border: 1px solid rgba(255, 255, 255, .08);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, .025);
-
-    transition: border-color .25s ease, background-color .25s ease;
-}
-
-.skill-card:hover {
-    border-color: rgba(27, 140, 21, .55);
-    background: rgba(255, 255, 255, .045);
-}
-
-.skill-card-header {
+.skills-viz-tab {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: .8rem;
 
-    margin-bottom: 1rem;
+    font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #999;
+
+    padding: .9rem 1.8rem;
+
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, .03);
+    cursor: pointer;
+
+    transition: border-color .25s ease, color .25s ease, background-color .25s ease;
 }
 
-.skill-card-header i {
-    width: 1.3em;
-
-    font-size: 2rem;
-    text-align: center;
+.skills-viz-tab i {
+    font-size: 1.6rem;
     color: rgb(27, 140, 21);
 }
 
-.skill-card-header h3 {
-    margin: 0;
-    font-size: 2.2rem;
+.skills-viz-tab:hover {
+    color: #fff;
+    border-color: rgba(27, 140, 21, .55);
 }
 
-.skill-card-desc {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+.skills-viz-tab.is-active {
+    color: #fff;
+    border-color: rgba(27, 140, 21, .85);
+    background: rgba(27, 140, 21, .16);
+}
+
+.skills-viz-tab:focus-visible {
+    outline: 2px solid rgba(27, 140, 21, .8);
+    outline-offset: 2px;
+}
+
+@keyframes skillsVizFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.skills-viz-panel.is-active {
+    animation: skillsVizFadeIn .35s ease;
+}
+
+.skills-viz-desc {
+    font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
     font-size: 1.5rem;
     line-height: 1.7;
     color: #999;
-    margin-bottom: 1.8rem !important;
+    text-align: center;
+
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
 }
 
-.tag-list {
+.skills-viz-orbit {
+    position: relative;
+
+    width: clamp(280px, 46vw, 480px);
+    height: clamp(280px, 46vw, 480px);
+    margin: 0 auto;
+}
+
+.skills-viz-hub {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+
+    width: 12rem;
+    height: 12rem;
+
     display: flex;
-    flex-wrap: wrap;
-    gap: .8rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    text-align: center;
 
-    margin: 0;
-    padding: 0;
+    border-radius: 50%;
+    background: rgba(9, 59, 7, .55);
+    box-shadow: 0 0 0 6px rgba(27, 140, 21, .08), 0 0 30px rgba(27, 140, 21, .25);
 
-    list-style: none;
+    transform: translate(-50%, -50%);
 }
 
-.tag-list li {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 1.3rem;
+.skills-viz-hub i {
+    font-size: 2.2rem;
+    color: rgb(27, 140, 21);
+}
+
+.skills-viz-hub span {
+    font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: .01em;
+    color: #eee;
+    padding: 0 .5rem;
+}
+
+.skills-viz-node {
+    --angle: calc(-90deg + var(--i) * (360deg / 7));
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+
+    width: clamp(100px, 19vw, 180px);
+    height: 1px;
+
+    background: linear-gradient(to right, rgba(27, 140, 21, .5), rgba(27, 140, 21, 0));
+    transform-origin: 0 0;
+    transform: rotate(var(--angle));
+}
+
+.skills-viz-node span {
+    position: absolute;
+    top: 0;
+    left: 100%;
+
+    display: inline-block;
+    max-width: 12.5rem;
+
+    font-family: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.25rem;
     letter-spacing: .01em;
     color: #ddd;
+    text-align: center;
 
     padding: .55em 1.1em;
 
     border: 1px solid rgba(255, 255, 255, .14);
     border-radius: 100px;
-    background: rgba(255, 255, 255, .03);
+    background: rgba(12, 12, 12, .85);
 
-    transition: border-color .2s ease, color .2s ease, background-color .2s ease;
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle)));
+    transition: border-color .2s ease, color .2s ease, background-color .2s ease, transform .2s ease;
 }
 
-.tag-list li:hover {
+.skills-viz-node span:hover {
     color: #fff;
     border-color: rgba(27, 140, 21, .8);
-    background: rgba(27, 140, 21, .14);
+    background: rgba(27, 140, 21, .18);
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle))) scale(1.06);
+}
+
+/**
+ * responsive:
+ * skills viz - below the radial layout's comfort width, drop the orbit
+ * and lay the hub + tags out as a simple centered, wrapping list.
+ * -------------------------------------------------------------------
+ */
+@media only screen and (max-width:767px) {
+    .skills-viz-orbit {
+        width: auto;
+        height: auto;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .skills-viz-hub {
+        position: static;
+        flex: 0 0 100%;
+        margin: 0 auto 1rem;
+        transform: none;
+    }
+    .skills-viz-node {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        transform: none;
+    }
+    .skills-viz-node span {
+        position: static;
+        max-width: none;
+        transform: none !important;
+    }
+    .skills-viz-node span:hover {
+        transform: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skills-viz-panel.is-active {
+        animation: none;
+    }
 }
 
 /**
